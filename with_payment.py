@@ -56,8 +56,8 @@ def razorpay_button():
         height=500,
     )
 # Rest of your app code
+st.markdown("Slides2Notes at ₹49/- Only!")
 razorpay_button()
-st.write("Slides2Notes at ₹49/- Only!")
 os.environ["OPENAI_API_KEY"] = st.text_input("Enter your OpenAI API Key")
 
 
