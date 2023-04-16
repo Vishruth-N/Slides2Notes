@@ -43,7 +43,7 @@ def op_readme():
 
     return "Success"
 
-st.title("Slides Summarizer \n(PDF to Markdown)")
+st.title("Slides Summarizer  - (PDF to Markdown)")
 import streamlit.components.v1 as components
 
 def razorpay_button():
@@ -53,10 +53,10 @@ def razorpay_button():
             <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_LeZt2rbF4z2CqX" async></script>
         </form>
         """,
-        height=500,
+        height=400,
     )
 # Rest of your app code
-st.markdown("Slides2Notes at ₹49/- Only!")
+st.markdown("## Slides2Notes at ₹49/- Only!")
 razorpay_button()
 os.environ["OPENAI_API_KEY"] = st.text_input("Enter your OpenAI API Key")
 
