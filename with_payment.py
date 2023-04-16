@@ -57,7 +57,8 @@ def razorpay_button():
     )
 # Rest of your app code
 razorpay_button()
-os.environ["OPENAI_API_KEY"] = "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"
+st.write("Slides2Notes at ₹49/- Only!")
+os.environ["OPENAI_API_KEY"] = st.text_input("Enter your OpenAI API Key")
 
 
 file = st.file_uploader("Upload Your Slides", type="pdf")
