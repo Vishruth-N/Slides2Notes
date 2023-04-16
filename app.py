@@ -22,7 +22,7 @@ def op_readme():
     llm = OpenAI(temperature=0.1)
     prompt = PromptTemplate(
         input_variables=["doc"],
-        template="You are an expert in . Give a very short structured summary (less that half of number of characters in the information) of below information with clear headings and brief text to aid with my exam prep. Give output in Markdown.\nINFORMATION:{doc}",
+        template="You are an expert in Summarising slides. Here is the text of an OCRed PDF containing course material. Your job is to give a very short structured summary (less that half of number of characters in the information) of below information with clear headings and brief text to aid with my exam prep. Give output in Markdown.\nINFORMATION:{doc}",
     )
 
     from langchain.chains import LLMChain
