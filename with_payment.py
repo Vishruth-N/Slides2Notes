@@ -22,7 +22,7 @@ def op_readme():
     llm = OpenAI(temperature=0.1)
     prompt = PromptTemplate(
         input_variables=["doc"],
-        template="You are an expert in Summarising slides. Here is the text of an OCRed PDF containing course material. Your job is to give a very short structured summary (less that half of number of characters in the information) of below information with clear headings and brief text to aid with my exam prep. Give output in Markdown.\nINFORMATION:{doc}",
+        template="You are an expert in Summarising slides. Here is the text of an OCRed PDF containing course material. Your job is to give a very short structured summary (less that half of number of characters in the information) of below information with clear headings and brief text to aid with my exam prep. Use bullet points Give output in Markdown.\nINFORMATION:{doc}",
     )
 
     from langchain.chains import LLMChain
@@ -31,7 +31,7 @@ def op_readme():
     # Run the chain only specifying the input variable.
     j=0
 
-    os.remove("result.md")
+    # os.remove("result.md")
 
     with open('result.md', 'w') as f:
         for i in range(0,len(full_content),2000):
@@ -44,18 +44,19 @@ def op_readme():
     return "Success"
 
 st.title("Slides Summarizer \n(PDF to Markdown)")
-import streamlit as st
+import streamlit.components.v1 as components
 
-def show_razorpay_button():
-    st.markdown("""
-        <iframe src="D:/PaperPal/Slides2Notes/razorpay_button/razorpay_button.html" frameborder="0" scrolling="no" width="450" height="400"></iframe>
-    """, unsafe_allow_html=True)
-
-# Add the Razorpay button
-show_razorpay_button()
-
+def razorpay_button():
+    components.html(
+        """
+        <form>
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_LeZt2rbF4z2CqX" async></script>
+        </form>
+        """,
+        height=500,
+    )
 # Rest of your app code
-
+razorpay_button()
 os.environ["OPENAI_API_KEY"] = "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"
 
 
