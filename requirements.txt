@@ -6,3 +6,4 @@ paytmchecksum
 langchain
 openai
 requests
+urllib

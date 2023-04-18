@@ -8,6 +8,15 @@ from langchain.document_loaders import TextLoader
 from langchain.document_loaders import PyPDFLoader
 from langchain.prompts import PromptTemplate
 
+import urllib.request
+def connect(host='http://google.com'):
+    try:
+        urllib.request.urlopen(host) #Python 3.x
+        return True
+    except:
+        return False
+
+
 
 def parametrized(dec):
     def layer(*args, **kwargs):
@@ -50,14 +59,13 @@ def run_with_timer(func, max_execution_time):
         if isinstance(result, Exception):
             #raise result
             st.error(result)
-        else:
-            st.error(result)
+
 
         return result
 
     return wrapper
 
-@run_with_timer(max_execution_time=10)
+@run_with_timer(max_execution_time=20)
 def op_readme():
     llm = OpenAI()
 
@@ -78,7 +86,7 @@ def op_readme():
 
     from langchain.chains import LLMChain
     
-    chain = LLMChain(llm=llm, prompt=prompt, max_iterations=2)
+    chain = LLMChain(llm=llm, prompt=prompt)
     # Run the chain only specifying the input variable.
     j=0
     file="result.md"
@@ -95,6 +103,8 @@ def op_readme():
 
     return "Success"
 
+
+
 #signal.signal(signal.SIGALRM, timeout_handler)
 st.title("Slides Summarizer \n(PDF to Markdown)")
 os.environ["OPENAI_API_KEY"] = st.text_input("Enter your OpenAI API Key")
@@ -102,12 +112,17 @@ os.environ["OPENAI_API_KEY"] = st.text_input("Enter your OpenAI API Key")
 file = st.file_uploader("Upload Your Slides", type="pdf")
 if file: 
     if os.environ["OPENAI_API_KEY"] == "":
-        print(openai.api_key )
-        st.write("Please enter your API key")
+        #print(openai.api_key )
+        st.error("Please enter your API key")
     else:
         with open("slides.pdf", "wb") as f:
             f.write(file.getbuffer())
         st.success("Saved File Successfully")
+        if(not connect()):
+            st.error("No Internet!")
+        while(not connect()):
+            pass
+        st.success("Connected to Internet Successfully")
         pdf = op_readme()
         if pdf=="Success":
             st.write("File converted successfully. Download the file to view the summary.")
