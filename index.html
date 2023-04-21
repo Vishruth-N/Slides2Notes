@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload JavaScript with Progress Ba | CodingNepal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="box">
+      <header>Your Slides go here.....</header>
+      <form action="#">
+        <input class="file-input" type="file" name="file" hidden>
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Browse File to Upload</p>
+      </form>
+      <section class="progress-area">
+        <li class="row">
+          <i class="fas fa-file-alt"></i>
+          <div class="content">
+            <div class="details">
+              <span class="name">report.pdf • Uploading</span>
+              <span class="percent">20 %</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 20%"></div>
+            </div>
+          </div>
+        </li>
+      </section>
+      <section class="uploaded-area">
+        <li class="row">
+          <div class="content upload">
+            <i class="fas fa-file-alt"></i>
+            <div class="details">
+              <span class="name">report.pdf • Uploaded</span>
+              <span class="size">3.6 mB</span>
+            </div>
+          </div>
+          <i class="fas fa-check"></i>
+        </li>
+      </section>
+    </div>
+
+    <div class="box">
+      <header style="margin-bottom: 20px;">And out pops the Summary.</header>
+      <a href="summary.pdf" download>
+      <section class="progress-area">
+        <li class="row">
+          <i class="fas fa-file-alt"></i>
+          <div class="content">
+            <div class="details">
+              <span class="name">Summary • Generating</span>
+              <span class="percent">20 %</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress" style="width: 20%"></div>
+            </div>
+          </div>
+        </li>
+      </section>
+      </a>
+      <a href="summary.pdf" download>
+      <section class="uploaded-area">
+        
+        <li class="row">
+          <div class="content upload">
+            <i class="fas fa-file-alt"></i>
+            <div class="details">
+              <span class="name">Summary.pdf • Generated</span>
+              <span class="size">2.31 mB</span>
+            </div>
+          </div>
+          <i class="fas fa-check"></i>
+        </li>
+      </section>
+      </a>
+    </div>
+  </div>
+  <script>
+    const form = document.querySelector("form"),
+    fileInput = document.querySelector(".file-input");
+    form.addEventListener("click", () =>{
+      fileInput.click();
+    });
+  </script>
+
+</body>
+</html>
